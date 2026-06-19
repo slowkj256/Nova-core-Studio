@@ -3,57 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaCore AI Studio</title>
-    <!-- Google Fonts -->
+    <title>NovaCore AI Studio - High Scale Architecture</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- ARQUIVO DE ESTILO UNIFICADO DIRETO NA RAIZ -->
     <link rel="stylesheet" href="./styles.css">
-    <style>
-        /* Ajustes finos extras para o layout mobile e footer */
-        .pricing-layout-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-3);
-            align-items: stretch;
-        }
-        .footer-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--space-3);
-            margin: var(--space-4) 0 var(--space-3);
-            text-align: left;
-        }
-        .footer-col h4 {
-            color: var(--color-white-pure);
-            font-size: var(--font-size-sm);
-            margin-bottom: var(--space-1);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .footer-col ul {
-            list-style: none;
-        }
-        .footer-col ul li {
-            margin-bottom: 0.5rem;
-            font-size: var(--font-size-sm);
-            color: var(--color-grey);
-        }
-        @media (max-width: 968px) {
-            .pricing-layout-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .footer-links-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAV BAR PRINCIPAL -->
     <header class="landing-header">
         <nav class="landing-nav">
             <div class="nav-logo">
@@ -63,148 +21,88 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#features" class="btn-text">Recursos</a></li>
-                <li><a href="#workflow" class="btn-text">Como Funciona</a></li>
-                <li><a href="#pricing" class="btn-text">Preços</a></li>
-                <li><a href="#faq" class="btn-text">FAQ</a></li>
+                <li><a href="#pricing" class="btn-text">Planos</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html" class="btn btn-secondary">Console</a>
                 <a href="register.html" class="btn btn-primary">Começar</a>
             </div>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- CONTAINER HERO -->
     <main>
         <section class="hero-section">
             <canvas id="particles-canvas"></canvas>
             <div class="hero-wrapper">
                 <div class="hero-info">
-                    <span class="hero-badge">Micro SaaS de Alto Padrão</span>
+                    <span class="hero-badge">Engine Computacional de Alta Performance</span>
                     <h1 class="hero-title">
                         A <span id="typing-headline" style="color: var(--color-neon);"></span><br>Para Seu Ecossistema.
                     </h1>
                     <p class="hero-subtitle">
-                        Desenvolva, gerencie e escale ferramentas de inteligência artificial sem frameworks complexos. Código puro e performance extrema.
+                        Monitore requisições de IA estruturadas em microsserviços puristas. Simulação em tempo real de latência estável e logs auditáveis.
                     </p>
                     <div class="hero-actions">
-                        <a href="register.html" class="btn btn-primary">Iniciar Teste Grátis</a>
-                        <a href="#workflow" class="btn btn-secondary">Ver Demonstração</a>
+                        <a href="register.html" class="btn btn-primary">Iniciar Desenvolvimento</a>
+                        <a href="dashboard.html" class="btn btn-secondary">Acessar Console</a>
                     </div>
                 </div>
-                <div class="hero-mockup-container">
-                    <div class="hero-mockup-preview glass-panel-neon"></div>
-                </div>
             </div>
         </section>
 
-        <!-- TRUST STRIP -->
-        <section class="trust-section">
-            <div class="trust-wrapper">
-                <span class="trust-label">Empresas que confiam na nossa arquitetura</span>
-                <div class="trust-logos-grid">
-                    <div class="trust-logo-item">ACME CORP</div>
-                    <div class="trust-logo-item">VORTEX LABS</div>
-                    <div class="trust-logo-item">APEX DATA</div>
-                    <div class="trust-logo-item">QUANTUM AI</div>
-                    <div class="trust-logo-item">NEXUS CORE</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROBLEMA VS SOLUÇÃO -->
-        <section class="features-section" id="problem-solution">
+        <!-- SEÇÃO DE PREÇOS CORRIGIDA (SEM VAZAMENTOS DE STRINGS) -->
+        <section class="features-section" id="pricing">
             <div class="section-headline-block">
-                <h2 class="neon-glow-text">Chega de Arquiteturas Complexas</h2>
-                <p>Veja a diferença sutil entre construir do jeito antigo e escalar com o ecossistema purista do NovaCore.</p>
+                <span class="hero-badge">Licenciamento</span>
+                <h2>Planos Escaláveis</h2>
             </div>
-            <div class="split-comparison-container">
-                <div class="comparison-box is-negative">
-                    <h4 style="color: var(--color-error); margin-bottom: var(--space-1);">Como era antes</h4>
-                    <p>Dependências pesadas que quebram a cada atualização, infraestrutura cara, código inflado e interfaces lentas com alto tempo de resposta.</p>
-                </div>
-                <div class="comparison-box is-positive">
-                    <h4 style="color: var(--color-neon); margin-bottom: var(--space-1);">Com o NovaCore AI</h4>
-                    <p>JavaScript Vanilla puro de alta performance, zero dependências externas comerciais, design em glassmorphism reativo e estabilidade absoluta.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FEATURES GRID -->
-        <section class="features-section" id="features">
-            <div class="section-headline-block">
-                <span class="hero-badge" style="margin: 0 auto;">Recursos</span>
-                <h2>Poder Computacional Sem Amarras</h2>
-                <p>Nossa suíte possui tudo o que você precisa para controlar sua lógica e analisar métricas de ponta a ponta.</p>
-            </div>
-            <div class="features-layout-grid">
-                <div class="card">
-                    <h4>Arquitetura Pura</h4>
-                    <p>Sem pacotes que expiram ou geram brechas na segurança. Código construído de forma limpa e otimizada.</p>
-                </div>
-                <div class="card">
-                    <h4>Performance Neon</h4>
-                    <p>Renderizações abaixo de 16ms garantindo taxas constantes de frame fluidas e transições premium.</p>
-                </div>
-                <div class="card">
-                    <h4>Layout Avançado</h4>
-                    <p>Sistema modular baseado em grid responsivo estrito de 8px adaptando-se a qualquer tela física.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- COMO FUNCIONA -->
-        <section class="features-section" id="workflow">
-            <div class="section-headline-block">
-                <h2>Implementação em Três Etapas</h2>
-                <p>Nossa esteira foi moldada para acelerar a entrega do seu Micro SaaS sem fricção técnica.</p>
-            </div>
-            <div class="steps-timeline">
-                <div class="step-node">
-                    <div class="step-number">1</div>
-                    <h4>Criar Conta</h4>
-                    <p>Faça seu cadastro instantâneo e ganhe acesso imediato ao ambiente Sandbox de testes isolados.</p>
-                </div>
-                <div class="step-node">
-                    <div class="step-number">2</div>
-                    <h4>Integrar API Key</h4>
-                    <p>Gere e copie suas credenciais criptografadas de forma segura e configure as chaves no seu sistema.</p>
-                </div>
-                <div class="step-node">
-                    <div class="step-number">3</div>
-                    <h4>Escalar Operação</h4>
-                    <p>Acompanhe gráficos analíticos em tempo real através do painel principal monitorando KPIs.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRICING -->
-        <section class="pricing-section" id="pricing">
-            <div class="section-headline-block">
-                <h2>Preços Claros e Justos</h2>
-                <p>Selecione a licença ideal para o estágio do seu ecossistema comercial.</p>
-            </div>
-            <div class="pricing-toggle-wrap">
-                <span>Mensal</span>
-                <label class="switch-control">
-                    <input type="checkbox" id="pricing-toggle" class="switch-input">
-                    <span class="switch-slider"></span>
-                </label>
-                <span>Anual <small style="color: var(--color-neon); font-weight: var(--weight-bold);">(Salva 20%)</small></span>
-            </div>
+            
             <div class="pricing-layout-grid">
-                <!-- CARD FREE -->
-                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <!-- Sandbox Card -->
+                <div class="card">
                     <div>
-                        <h4 style="color: var(--color-grey);">Free</h4>
-                        <div style="margin: var(--space-2) 0;"><span id="price-free" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>/mês</div>
-                        <p>Para experimentações e pequenos protótipos de engenhos rápidos.</p>
+                        <h4 style="color: var(--color-grey); font-size: var(--font-size-lg);">Developer</h4>
+                        <div style="margin: var(--space-2) 0;">
+                            <span style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>
+                        </div>
+                        <p style="color: var(--color-grey-soft); font-size: var(--font-size-sm);">Ambiente de testes local isolado com carga mockada estável.</p>
                     </div>
-                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-3);">Começar Agora</a>
+                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-3);">Obter Acesso</a>
                 </div>
 
-                <!-- CARD PRO -->
-                <div class="card glass-panel-neon" style="display: flex; flex-direction: column; justify-content: space-between; border-color: var(--color-neon);">
+                <!-- Pro Card -->
+                <div class="card glass-panel-neon">
+                    <div>
+                        <span class="hero-badge" style="float: right;">Recomendado</span>
+                        <h4 style="color: var(--color-neon); font-size: var(--font-size-lg);">Production Pro</h4>
+                        <div style="margin: var(--space-2) 0;">
+                            <span style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 97</span><span style="color: var(--color-grey-soft);">/mês</span>
+                        </div>
+                        <p style="color: var(--color-grey);">Métricas reativas dinâmicas de processamento em tempo real integradas à API Key.</p>
+                    </div>
+                    <a href="register.html" class="btn btn-primary" style="width: 100%; margin-top: var(--space-3);">Assinar Licença</a>
+                </div>
+
+                <!-- Enterprise Card -->
+                <div class="card">
+                    <div>
+                        <h4 style="color: var(--color-info); font-size: var(--font-size-lg);">Enterprise Scale</h4>
+                        <div style="margin: var(--space-2) 0;">
+                            <span style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 297</span><span style="color: var(--color-grey-soft);">/mês</span>
+                        </div>
+                        <p style="color: var(--color-grey-soft); font-size: var(--font-size-sm);">Infraestrutura dedicada com isolamento de nós computacionais redundantes.</p>
+                    </div>
+                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-3);">Falar com Especialistas</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>
+content: space-between; border-color: var(--color-neon);">
                     <div>
                         <span class="hero-badge" style="float: right; margin-bottom: 0;">Recomendado</span>
                         <h4 style="color: var(--color-neon); margin-top: var(--space-1);">Pro</h4>
