@@ -1,0 +1,122 @@
+/* ==========================================================================
+   NovaCore AI Studio - Advanced Glassmorphism & Neon Visual Effects
+   File: css/glassmorphism.css
+   ========================================================================== */
+
+/* --- 1. CLASSES CORES DO COMPONENTE GLASS --- */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: var(--transition-normal);
+}
+
+.glass-panel-neon {
+    background: rgba(0, 255, 136, 0.02);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border: 1px solid rgba(0, 255, 136, 0.12);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm), inset 0 0 15px rgba(0, 255, 136, 0.05);
+    transition: var(--transition-normal);
+}
+
+.glass-panel-neon:hover {
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: var(--color-neon-glow), var(--shadow-neon-inset);
+    background: rgba(0, 255, 136, 0.04);
+}
+
+/* --- 2. TEXTURAS DE CARD REFORÇADAS (GLOW E EFEITOS NEON) --- */
+.glass-card-interactive {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: var(--blur-soft);
+    -webkit-backdrop-filter: var(--blur-soft);
+    border: 1px solid var(--color-border);
+    position: relative;
+    z-index: var(--z-base);
+    overflow: hidden;
+}
+
+.glass-card-interactive::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: var(--transition-normal);
+    z-index: var(--z-back);
+}
+
+.glass-card-interactive:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+.glass-card-interactive:hover::before {
+    opacity: 1;
+}
+
+/* --- 3. ELEMENTOS DE DESTAQUE PREMIUM (GLOW E BORDA NEON ABSOLUTA) --- */
+.neon-glow-text {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3), 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.neon-glow-text-intense {
+    text-shadow: var(--color-neon-glow-intense);
+}
+
+.neon-border-active {
+    border-color: var(--color-neon) !important;
+    box-shadow: var(--color-neon-glow), var(--shadow-neon-inset) !important;
+}
+
+/* Elementos de gradiente sutil de borda móvel usando background clip */
+.glass-input-premium {
+    background: rgba(5, 5, 5, 0.6) !important;
+    backdrop-filter: var(--blur-soft);
+    -webkit-backdrop-filter: var(--blur-soft);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-input-premium:focus {
+    border-color: var(--color-neon);
+    box-shadow: var(--color-neon-glow), var(--shadow-neon-inset);
+}
+
+/* --- 4. BACKDROP BLUR ELEMENTOS FLUTUANTES ORGÂNICOS --- */
+.blur-blob {
+    position: absolute;
+    border-radius: var(--radius-full);
+    filter: blur(80px);
+    z-index: var(--z-back);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.blur-blob-neon {
+    background: var(--color-neon);
+    width: 300px;
+    height: 300px;
+}
+
+.blur-blob-blue {
+    background: #00CCFF;
+    width: 400px;
+    height: 400px;
+}
+
+/* Suporte de fallback para navegadores legados sem suporte a backdrop-filter */
+@supports (not (backdrop-filter: blur(20px))) and (not (-webkit-backdrop-filter: blur(20px))) {
+    .glass-panel, .glass-panel-neon, .glass-card-interactive {
+        background: var(--color-panel-light);
+        backdrop-filter: none !important;
+    }
+}

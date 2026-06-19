@@ -1,0 +1,365 @@
+/* ==========================================================================
+   NovaCore AI Studio - Design System Components
+   File: css/components.css
+   ========================================================================== */
+
+/* --- 1. BOTÕES (Buttons) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--color-neon);
+    color: var(--color-bg);
+    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-white-pure);
+    box-shadow: var(--color-neon-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--color-white);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-neon);
+    color: var(--color-neon);
+    transform: translateY(-2px);
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--color-grey);
+    padding: var(--space-1) var(--space-2);
+}
+
+.btn-text:hover:not(:disabled) {
+    color: var(--color-neon);
+}
+
+.btn-danger {
+    background-color: rgba(255, 51, 102, 0.1);
+    color: var(--color-error);
+    border: 1px solid rgba(255, 51, 102, 0.2);
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: var(--color-error);
+    color: var(--color-bg);
+    box-shadow: var(--color-error-glow);
+    transform: translateY(-2px);
+}
+
+/* Loading State para Botões */
+.btn.is-loading {
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.btn.is-loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: var(--radius-full);
+    animation: spin 0.6s linear infinite;
+}
+
+/* --- 2. CARDS --- */
+.card {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    transition: var(--transition-normal);
+}
+
+.card-hover:hover {
+    border-color: rgba(0, 255, 136, 0.25);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), var(--color-neon-dim);
+    transform: translateY(-4px);
+}
+
+/* --- 3. INPUTS & FORM CONTROLS --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin-bottom: var(--space-3);
+    width: 100%;
+}
+
+.form-label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-medium);
+    color: var(--color-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-control {
+    background-color: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: var(--color-neon);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.15), var(--shadow-neon-inset);
+    background-color: var(--color-panel);
+}
+
+.form-control::placeholder {
+    color: var(--color-grey-soft);
+}
+
+/* Toggle Switch Control */
+.switch-control {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+}
+
+.switch-input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+}
+
+.switch-slider {
+    width: 40px;
+    height: 20px;
+    background-color: var(--color-grey-dark);
+    border-radius: var(--radius-full);
+    position: relative;
+    transition: var(--transition-normal);
+    border: 1px solid var(--color-border);
+}
+
+.switch-slider::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--color-grey);
+    border-radius: var(--radius-full);
+    transition: var(--transition-normal);
+}
+
+.switch-input:checked + .switch-slider {
+    background-color: var(--color-neon-dim);
+    border-color: var(--color-neon);
+}
+
+.switch-input:checked + .switch-slider::before {
+    transform: translateX(20px);
+    background-color: var(--color-neon);
+    box-shadow: var(--color-neon-glow);
+}
+
+/* --- 4. BADGES (Etiquetas de Status) --- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
+    border: 1px solid transparent;
+}
+
+.badge-success {
+    background-color: rgba(0, 255, 136, 0.08);
+    color: var(--color-success);
+    border-color: rgba(0, 255, 136, 0.15);
+}
+
+.badge-error {
+    background-color: rgba(255, 51, 102, 0.08);
+    color: var(--color-error);
+    border-color: rgba(255, 51, 102, 0.15);
+}
+
+.badge-warning {
+    background-color: rgba(255, 187, 0, 0.08);
+    color: var(--color-warning);
+    border-color: rgba(255, 187, 0, 0.15);
+}
+
+/* --- 5. MODAIS (Modals) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(5, 5, 5, 0.85);
+    backdrop-filter: var(--blur-soft);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--transition-normal);
+    padding: var(--space-2);
+}
+
+.modal-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    transform: scale(0.95);
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.modal-overlay.is-active .modal-window {
+    transform: scale(1);
+}
+
+.modal-header {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-body {
+    padding: var(--space-3);
+}
+
+.modal-footer {
+    padding: var(--space-2) var(--space-3);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-bg-soft);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+}
+
+/* --- 6. TOAST NOTIFICATIONS --- */
+.toast-container {
+    position: fixed;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    z-index: var(--z-toast);
+    pointer-events: none;
+}
+
+.toast-item {
+    background-color: var(--color-panel-light);
+    border: 1px solid var(--color-border);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 280px;
+    max-width: 400px;
+    pointer-events: auto;
+    animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-item.is-success { border-left: 3px solid var(--color-success); }
+.toast-item.is-error { border-left: 3px solid var(--color-error); }
+
+/* --- 7. DROPDOWNS --- */
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-1);
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition-normal);
+    z-index: var(--z-dropdown);
+}
+
+.dropdown-wrapper.is-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--color-grey);
+    transition: var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-panel-light);
+    color: var(--color-neon);
+}
+
+/* Animations local utilities */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+@keyframes slideInRight {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

@@ -1,0 +1,274 @@
+/* ==========================================================================
+   NovaCore AI Studio - Structural Layout & Grids
+   File: css/layout.css
+   ========================================================================== */
+
+/* --- 1. ESTRUTURA GLOBAL E CONTÊINERES --- */
+.container-fluid {
+    width: 100%;
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* --- 2. LANDING PAGE NAVBAR & FOOTER --- */
+.landing-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: var(--z-sticky);
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-normal);
+}
+
+.landing-header.is-scrolled {
+    background-color: rgba(5, 5, 5, 0.75);
+    backdrop-filter: var(--blur-glass);
+    height: 70px;
+}
+
+.landing-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-3);
+}
+
+.landing-nav .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.landing-nav .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.landing-footer {
+    background-color: var(--color-bg-soft);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-10) 0 var(--space-4) 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: var(--space-6);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-3);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.footer-column h5 {
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-1);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.footer-links a {
+    color: var(--color-grey);
+    font-size: var(--font-size-sm);
+}
+
+.footer-links a:hover {
+    color: var(--color-neon);
+    transform: translateX(2px);
+}
+
+.footer-bottom {
+    max-width: var(--max-width);
+    margin: var(--space-8) auto 0 auto;
+    padding: var(--space-3) var(--space-3) 0 var(--space-3);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+/* --- 3. DASHBOARD ARQUITETURA DE MALHA (APP LAYOUT) --- */
+.app-wrapper {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar main";
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar Esquerda */
+.app-sidebar {
+    grid-area: sidebar;
+    background-color: var(--color-panel);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-fixed);
+    transition: var(--transition-normal);
+}
+
+.sidebar-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: var(--space-3) var(--space-2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-grey);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--weight-medium);
+    transition: var(--transition-fast);
+}
+
+.sidebar-link svg {
+    width: 18px;
+    height: 18px;
+    transition: var(--transition-fast);
+}
+
+.sidebar-link:hover {
+    color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.sidebar-link.is-active {
+    color: var(--color-bg);
+    background-color: var(--color-neon);
+    font-weight: var(--weight-semibold);
+    box-shadow: var(--color-neon-glow);
+}
+
+.sidebar-link.is-active svg {
+    color: var(--color-bg);
+}
+
+.sidebar-footer {
+    padding: var(--space-3) var(--space-2);
+    border-top: 1px solid var(--color-border);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Header Superior do App */
+.app-header {
+    grid-area: header;
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: var(--blur-soft);
+    border-bottom: 1px solid var(--color-border);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-4);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* Área de Conteúdo Principal */
+.app-main {
+    grid-area: main;
+    padding: var(--space-4);
+    background-color: var(--color-bg);
+    overflow-y: auto;
+}
+
+.dashboard-layout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+/* --- 4. RESPONSIVIDADE E ADAPTAÇÃO --- */
+@media (max-width: 1200px) {
+    .dashboard-layout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "header"
+            "main";
+    }
+
+    .app-sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .app-sidebar.is-open {
+        left: 0;
+    }
+
+    .landing-nav .nav-menu {
+        display: none;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}

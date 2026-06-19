@@ -1,0 +1,150 @@
+/* ==========================================================================
+   NovaCore AI Studio - High-Performance Transitions & Keyframes
+   File: css/animations.css
+   ========================================================================== */
+
+/* --- 1. KEYFRAMES DE ENTRADA E SUITE DE EFEITOS --- */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efeito Pulsação Neon Cíclica */
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), inset 0 0 8px rgba(0, 255, 136, 0.1);
+        border-color: rgba(0, 255, 136, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 255, 136, 0.5), inset 0 0 12px rgba(0, 255, 136, 0.2);
+        border-color: rgba(0, 255, 136, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), inset 0 0 8px rgba(0, 255, 136, 0.1);
+        border-color: rgba(0, 255, 136, 0.15);
+    }
+}
+
+/* Movimento Sutil de Background Mesh */
+@keyframes meshShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Cursor de Digitação Piscante */
+@keyframes blinkCursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-neon); }
+}
+
+/* --- 2. CLASSES UTILITÁRIAS DE ANIMAÇÃO --- */
+
+.animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+    animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-pulse-neon {
+    animation: neonPulse 3s infinite ease-in-out;
+}
+
+/* --- 3. INFRAESTRUTURA DE SCROLL REVEAL (INTERSECTION OBSERVER) --- */
+
+.reveal-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal-element.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-element.reveal-right {
+    transform: translateX(40px);
+}
+
+.reveal-element.reveal-scale {
+    transform: scale(0.95);
+}
+
+/* Estado Ativado via JavaScript */
+.reveal-element.is-revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Sistema de Delays Escalonados Baseados em Classes */
+.delay-1 { transition-delay: 100ms !important; }
+.delay-2 { transition-delay: 200ms !important; }
+.delay-3 { transition-delay: 300ms !important; }
+.delay-4 { transition-delay: 400ms !important; }
+.delay-5 { transition-delay: 500ms !important; }
+
+/* Micro-interações de Redução de Movimento (Acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-element,
+    .animate-fade-in-up,
+    .animate-scale-up,
+    .animate-pulse-neon {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
