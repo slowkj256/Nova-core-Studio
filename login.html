@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NovaCore AI Studio - Autenticação Segura de Usuários.">
     <title>Login | NovaCore AI Studio</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/glassmorphism.css">
+    <!-- Links Corrigidos para a Raiz -->
+    <link rel="stylesheet" href="./variables.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./components.css">
+    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="./animations.css">
+    <link rel="stylesheet" href="./glassmorphism.css">
     <style>
         .auth-viewport {
             width: 100vw;
@@ -41,7 +42,6 @@
             font-weight: var(--weight-display);
             font-size: var(--font-size-xxl);
             color: var(--color-white-pure);
-            letter-spacing: -0.03em;
         }
         .auth-card {
             padding: var(--space-5) var(--space-4);
@@ -53,25 +53,12 @@
         .auth-header h2 {
             font-size: var(--font-size-xl);
             color: var(--color-white-pure);
-            margin-bottom: var(--space-1);
-        }
-        .auth-header p {
-            font-size: var(--font-size-sm);
-            color: var(--color-grey);
         }
         .auth-options {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: var(--space-4);
-            font-size: var(--font-size-sm);
-        }
-        .auth-options a {
-            font-size: var(--font-size-sm);
-            color: var(--color-grey);
-        }
-        .auth-options a:hover {
-            color: var(--color-neon);
         }
         .auth-footer {
             margin-top: var(--space-4);
@@ -79,17 +66,11 @@
             font-size: var(--font-size-sm);
             color: var(--color-grey);
         }
-        .auth-footer a {
-            font-weight: var(--weight-semibold);
-        }
     </style>
 </head>
 <body>
 
     <div class="auth-viewport">
-        <div class="blur-blob blur-blob-neon" style="top: -10%; left: -10%;"></div>
-        <div class="blur-blob blur-blob-blue" style="bottom: -15%; right: -10%;"></div>
-
         <div class="auth-container animate-scale-up">
             <div class="auth-brand">
                 <a href="index.html" class="neon-glow-text">NOVA<span style="color: var(--color-neon);">CORE</span></a>
@@ -104,12 +85,12 @@
                 <form id="login-form" novalidate>
                     <div class="form-group">
                         <label for="email" class="form-label">Endereço de E-mail</label>
-                        <input type="email" id="email" class="form-control glass-input-premium" placeholder="seu@email.com" required autocomplete="email">
+                        <input type="email" id="email" class="form-control glass-input-premium" placeholder="seu@email.com" required>
                     </div>
 
                     <div class="form-group" style="margin-bottom: var(--space-2);">
                         <label for="password" class="form-label">Sua Senha</label>
-                        <input type="password" id="password" class="form-control glass-input-premium" placeholder="••••••••" required autocomplete="current-password">
+                        <input type="password" id="password" class="form-control glass-input-premium" placeholder="••••••••" required>
                     </div>
 
                     <div class="auth-options">
@@ -118,10 +99,10 @@
                             <span class="switch-slider"></span>
                             Lembrar acesso
                         </label>
-                        <a href="#">Esqueceu a senha?</a>
+                        <a href="#" style="font-size: var(--font-size-sm); color: var(--color-grey);">Esqueceu a senha?</a>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: var(--space-2);">
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
                         Entrar no Painel
                     </button>
                 </form>
@@ -133,62 +114,25 @@
         </div>
     </div>
 
-    <script src="/js/core.js"></script>
-    <script src="/js/api.js"></script>
-    <script src="/js/auth.js"></script>
-    <script src="/js/components.js"></script>
+    <!-- Scripts Corrigidos para a Raiz -->
+    <script src="./core.js"></script>
+    <script src="./api.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./components.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('login-form');
-            const emailInput = document.getElementById('email');
-            const passwordInput = document.getElementById('password');
-            const rememberCheckbox = document.getElementById('remember-me');
-            const submitBtn = document.getElementById('submit-btn');
-
-            const savedEmail = localStorage.getItem('novacore_remembered_email');
-            if (savedEmail) {
-                emailInput.value = savedEmail;
-                rememberCheckbox.checked = true;
-            }
-
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-
-                const email = emailInput.value.trim();
-                const password = passwordInput.value;
-                const rememberMe = rememberCheckbox.checked;
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    window.NovaCoreUI.showToast('Por favor, insira um e-mail válido.', 'error');
-                    emailInput.focus();
-                    return;
-                }
-
-                if (password.length < 6) {
-                    window.NovaCoreUI.showToast('A senha deve conter no mínimo 6 caracteres.', 'error');
-                    passwordInput.focus();
-                    return;
-                }
-
-                submitBtn.classList.add('is-loading');
-                submitBtn.disabled = true;
-
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                
                 try {
-                    await window.NovaCoreAuth.login(email, password, rememberMe);
-                    window.NovaCoreUI.showToast('Autenticado com sucesso! Redirecionando...', 'success');
-                    
-                    const urlParams = new URLSearchParams(window.location.search);
-                    const redirectUrl = urlParams.get('redirect') || 'dashboard.html';
-                    
-                    setTimeout(() => {
-                        window.location.replace(redirectUrl);
-                    }, 800);
-
+                    await window.NovaCoreAuth.login(email, password, true);
+                    window.NovaCoreUI.showToast('Autenticado com sucesso!', 'success');
+                    setTimeout(() => window.location.replace('dashboard.html'), 800);
                 } catch (error) {
                     window.NovaCoreUI.showToast(error.message, 'error');
-                    submitBtn.classList.remove('is-loading');
-                    submitBtn.disabled = false;
                 }
             });
         });

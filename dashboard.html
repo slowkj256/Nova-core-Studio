@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | NovaCore AI Studio</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/glassmorphism.css">
+    <!-- Links Corrigidos para a Raiz -->
+    <link rel="stylesheet" href="./variables.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./components.css">
+    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="./animations.css">
+    <link rel="stylesheet" href="./glassmorphism.css">
     <style>
-        /* Ajustes de layout pontuais e micro-utilitários para o painel */
         .stat-grid-three {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -55,16 +56,14 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
         @media (max-width: 768px) {
-            .stat-grid-three {
-                grid-template-columns: 1fr;
-            }
+            .stat-grid-three { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <div class="app-wrapper animate-fade-in">
-        
+        <!-- SIDEBAR -->
         <aside class="app-sidebar" id="sidebar-menu">
             <div>
                 <div class="sidebar-header">
@@ -73,193 +72,84 @@
                     </a>
                 </div>
                 <nav class="sidebar-nav">
-                    <a href="dashboard.html" class="sidebar-link is-active">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-                        Dashboard
-                    </a>
-                    <a href="#" class="sidebar-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-                        Modelos IA
-                    </a>
-                    <a href="#" class="sidebar-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        Credenciais
-                    </a>
+                    <a href="dashboard.html" class="sidebar-link is-active">Dashboard</a>
                 </nav>
             </div>
             <div class="sidebar-footer">
-                <button id="logout-btn" class="btn btn-danger" style="width: 100%;">
-                    Sair do Sistema
-                </button>
+                <button id="logout-btn" class="btn btn-danger" style="width: 100%;">Sair do Sistema</button>
             </div>
         </aside>
 
+        <!-- HEADER -->
         <header class="app-header">
             <div class="header-left">
-                <button class="btn btn-text" id="mobile-toggle-btn" style="display: none; padding: 0;" aria-label="Abrir Menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
                 <h3 style="font-size: var(--font-size-md); font-weight: var(--weight-semibold);">Ambiente de Console</h3>
             </div>
             <div class="header-right">
-                <div class="dropdown-wrapper">
-                    <button class="btn btn-secondary" data-toggle="dropdown" id="user-menu-btn" style="text-transform: none; gap: var(--space-2);">
-                        <span id="user-display-name">Carregando...</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Meu Perfil</a>
-                        <a href="#" class="dropdown-item">Faturamento</a>
-                        <hr style="border-color: var(--color-border); margin: 4px 0;">
-                        <a href="#" class="dropdown-item" id="dropdown-logout" style="color: var(--color-error);">Desconectar</a>
-                    </div>
-                </div>
+                <button class="btn btn-secondary" id="user-display-name">Carregando...</button>
             </div>
         </header>
 
+        <!-- MAIN -->
         <main class="app-main animate-fade-in-up">
-            
             <div class="stat-grid-three">
                 <div class="card glass-panel-neon">
                     <span class="form-label">Requisições Consumidas</span>
                     <div class="stat-display-value" id="stat-requests">...</div>
-                    <span class="badge badge-success">Mês Ativo</span>
                 </div>
                 <div class="card glass-panel-neon">
                     <span class="form-label">Faturamento Operacional</span>
                     <div class="stat-display-value" id="stat-revenue">...</div>
-                    <span class="badge badge-success">+14.2% total</span>
                 </div>
                 <div class="card glass-panel-neon">
                     <span class="form-label">Média de Latência</span>
                     <div class="stat-display-value">14.2 ms</div>
-                    <span class="badge badge-warning">Excelente</span>
                 </div>
             </div>
 
             <div class="dashboard-layout-grid">
-                
                 <div class="card glass-panel">
-                    <h4 style="margin-bottom: var(--space-1); color: var(--color-white-pure);">Tokens de Acesso à API</h4>
-                    <p style="font-size: var(--font-size-sm);">Utilize sua chave criptografada para autenticar requisições de backend do seu Micro SaaS para as nossas rotas corporativas.</p>
-                    
+                    <h4 style="color: var(--color-white-pure);">Tokens de Acesso à API</h4>
                     <div class="api-key-container">
-                        <span style="color: var(--color-grey);" id="api-key-masked">nc_live_••••••••••••••••••••••••</span>
-                        <button class="btn btn-text" id="copy-key-btn" style="margin-left: auto; padding: var(--space-1);" aria-label="Copiar chave">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        </button>
+                        <span id="api-key-masked">nc_live_••••••••••••••••••••••••</span>
                     </div>
-                    <button class="btn btn-secondary" style="margin-top: var(--space-3);" onclick="window.NovaCoreUI.openModal('modal-sandbox')">Simular Endpoint Sandbox</button>
                 </div>
-
                 <div class="card glass-panel">
-                    <h4 style="color: var(--color-white-pure);">Logs Auditores de Atividade</h4>
-                    <div class="activity-list-wrapper" id="logs-container">
-                        </div>
+                    <h4 style="color: var(--color-white-pure);">Logs Auditores</h4>
+                    <div class="activity-list-wrapper" id="logs-container"></div>
                 </div>
-
             </div>
         </main>
     </div>
 
-    <div class="modal-overlay" id="modal-sandbox" aria-hidden="true">
-        <div class="modal-window">
-            <div class="modal-header">
-                <h4>Simulação de Gateway Sandbox</h4>
-                <button class="btn btn-text" data-dismiss="modal" style="padding: 0;">✕</button>
-            </div>
-            <div class="modal-body">
-                <p style="font-size: var(--font-size-sm); margin-bottom: var(--space-2);">Realize um disparo simulado mockado para validar os interceptores de cabeçalho do seu ApiClient.</p>
-                <pre><code style="color: var(--color-neon);">POST https://api.novacore.ai/v1/sandbox
-Authorization: Bearer nc_live_valid_token
-Content-Type: application/json</code></pre>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" data-dismiss="modal">Fechar Janela</button>
-                <button class="btn btn-primary" id="btn-trigger-sandbox">Disparar Request</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/core.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/components.js"></script>
+    <!-- Scripts Corrigidos para a Raiz -->
+    <script src="./core.js"></script>
+    <script src="./api.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./components.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Coleta dados estruturais da sessão corrente
             const session = window.NovaCoreAuth.getCurrentSession();
+            if (!session) return;
             
-            if (!session) return; // O Route Guard automático em auth.js assume se estiver vazio
-
-            // Popula os elementos nominais do cabeçalho do console
             document.getElementById('user-display-name').textContent = session.user.name;
-
-            // Alimenta os blocos estatísticos analíticos utilizando dados mockados de API
             const mockData = window.NovaCoreAPI.FallbackMockData;
             document.getElementById('stat-requests').textContent = window.NovaCoreUtils.formatCompactNumber(mockData.stats.sessions);
             document.getElementById('stat-revenue').textContent = window.NovaCoreUtils.formatCurrency(mockData.stats.revenue);
 
-            // Montagem dinâmica dos itens do log de auditoria
             const logsContainer = document.getElementById('logs-container');
             if (logsContainer) {
                 logsContainer.innerHTML = mockData.activities.map(act => `
                     <div class="activity-row-item">
                         <div>
-                            <h5 style="font-size: var(--font-size-sm); color: var(--color-white);">${window.NovaCoreUtils.escapeHTML(act.action)}</h5>
-                            <small style="color: var(--color-grey-soft);">${act.date} por ${window.NovaCoreUtils.escapeHTML(act.name)}</small>
+                            <h5 style="font-size: var(--font-size-sm); color: var(--color-white);">${act.action}</h5>
+                            <small style="color: var(--color-grey-soft);">${act.date}</small>
                         </div>
-                        <span class="badge badge-${act.status === 'success' ? 'success' : act.status === 'warning' ? 'warning' : 'error'}">${act.status}</span>
                     </div>
                 `).join('');
             }
 
-            // Ação de cópia funcional do Token de Acesso
-            const copyBtn = document.getElementById('copy-key-btn');
-            if (copyBtn) {
-                copyBtn.addEventListener('click', () => {
-                    const rawToken = "nc_live_67c293b1aa92e81109ff827bbb01ef94e1";
-                    navigator.clipboard.writeText(rawToken).then(() => {
-                        window.NovaCoreUI.showToast('Chave de API copiada para a área de transferência!', 'success');
-                    });
-                });
-            }
-
-            // Acionamento interno de simulação Sandbox da Modal
-            const sandboxTrigger = document.getElementById('btn-trigger-sandbox');
-            if (sandboxTrigger) {
-                sandboxTrigger.addEventListener('click', () => {
-                    sandboxTrigger.classList.add('is-loading');
-                    setTimeout(() => {
-                        sandboxTrigger.classList.remove('is-loading');
-                        window.NovaCoreUI.closeModal('modal-sandbox');
-                        window.NovaCoreUI.showToast('Response 200 OK: Conexão Sandbox estabelecida.', 'success');
-                    }, 1200);
-                });
-            }
-
-            // Gerenciamento responsivo do menu lateral em viewports mobile
-            const mobileToggle = document.getElementById('mobile-toggle-btn');
-            const sidebar = document.getElementById('sidebar-menu');
-            if (mobileToggle && sidebar) {
-                mobileToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-                window.addEventListener('resize', () => {
-                    mobileToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-                });
-                mobileToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    sidebar.classList.toggle('is-open');
-                });
-                document.addEventListener('click', () => sidebar.classList.remove('is-open'));
-            }
-
-            // Associações de gatilho de LogOut
-            const performLogout = () => window.NovaCoreAuth.logout();
-            document.getElementById('logout-btn').addEventListener('click', performLogout);
-            document.getElementById('dropdown-logout').addEventListener('click', (e) => {
-                e.preventDefault();
-                performLogout();
-            });
+            document.getElementById('logout-btn').addEventListener('click', () => window.NovaCoreAuth.logout());
         });
     </script>
 </body>
