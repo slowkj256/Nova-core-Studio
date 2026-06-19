@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NovaCore AI Studio - Próxima geração de inteligência computacional e arquitetura SaaS de alto padrão.">
     <title>NovaCore AI Studio</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/variables.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/glassmorphism.css">
-    <link rel="stylesheet" href="/css/landing.css">
+    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- ARQUIVO DE ESTILO UNIFICADO DIRETO NA RAIZ -->
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <header class="landing-header">
-        <nav class="landing-nav" aria-label="Navegação Principal">
+        <nav class="landing-nav">
             <div class="nav-logo">
                 <a href="index.html" class="neon-glow-text" style="font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--font-size-xl); color: var(--color-white-pure);">
                     NOVA<span style="color: var(--color-neon);">CORE</span>
@@ -38,11 +35,12 @@
         </nav>
     </header>
 
+    <!-- HERO SECTION -->
     <main>
         <section class="hero-section">
             <canvas id="particles-canvas"></canvas>
             <div class="hero-wrapper">
-                <div class="hero-info reveal-element animate-fade-in-up">
+                <div class="hero-info">
                     <span class="hero-badge">Micro SaaS de Alto Padrão</span>
                     <h1 class="hero-title">
                         A <span id="typing-headline" style="color: var(--color-neon);"></span><br>Para Seu Ecossistema.
@@ -55,12 +53,13 @@
                         <a href="#workflow" class="btn btn-secondary">Ver Demonstração</a>
                     </div>
                 </div>
-                <div class="hero-mockup-container reveal-element reveal-right delay-2">
+                <div class="hero-mockup-container">
                     <div class="hero-mockup-preview glass-panel-neon"></div>
                 </div>
             </div>
         </section>
 
+        <!-- TRUST STRIP -->
         <section class="trust-section">
             <div class="trust-wrapper">
                 <span class="trust-label">Empresas que confiam na nossa arquitetura</span>
@@ -74,65 +73,65 @@
             </div>
         </section>
 
+        <!-- PROBLEMA VS SOLUÇÃO -->
         <section class="features-section" id="problem-solution">
-            <div class="section-headline-block reveal-element">
+            <div class="section-headline-block">
                 <h2 class="neon-glow-text">Chega de Arquiteturas Complexas</h2>
                 <p>Veja a diferença sutil entre construir do jeito antigo e escalar com o ecossistema purista do NovaCore.</p>
             </div>
             <div class="split-comparison-container">
-                <div class="comparison-box is-negative reveal-element reveal-left">
+                <div class="comparison-box is-negative">
                     <h4 style="color: var(--color-error); margin-bottom: var(--space-1);">Como era antes</h4>
                     <p>Dependências pesadas que quebram a cada atualização, infraestrutura cara, código inflado e interfaces lentas com alto tempo de resposta.</p>
                 </div>
-                <div class="comparison-box is-positive reveal-element reveal-right">
+                <div class="comparison-box is-positive">
                     <h4 style="color: var(--color-neon); margin-bottom: var(--space-1);">Com o NovaCore AI</h4>
                     <p>JavaScript Vanilla puro de alta performance, zero dependências externas comerciais, design em glassmorphism reativo e estabilidade absoluta.</p>
                 </div>
             </div>
         </section>
 
+        <!-- FEATURES GRID -->
         <section class="features-section" id="features">
-            <div class="section-headline-block reveal-element">
+            <div class="section-headline-block">
                 <span class="hero-badge" style="margin: 0 auto;">Recursos</span>
                 <h2>Poder Computacional Sem Amarras</h2>
                 <p>Nossa suíte possui tudo o que você precisa para controlar sua lógica e analisar métricas de ponta a ponta.</p>
             </div>
             <div class="features-layout-grid">
-                <div class="card card-hover glass-card-interactive reveal-element delay-1">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-neon); margin-bottom: var(--space-2);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                <div class="card">
                     <h4>Arquitetura Pura</h4>
                     <p>Sem pacotes que expiram ou geram brechas na segurança. Código construído de forma limpa e otimizada.</p>
                 </div>
-                <div class="card card-hover glass-card-interactive reveal-element delay-2">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-neon); margin-bottom: var(--space-2);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <div class="card">
                     <h4>Performance Neon</h4>
                     <p>Renderizações abaixo de 16ms garantindo taxas constantes de frame fluidas e transições premium.</p>
                 </div>
-                <div class="card card-hover glass-card-interactive reveal-element delay-3">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-neon); margin-bottom: var(--space-2);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <div class="card">
                     <h4>Layout Avançado</h4>
                     <p>Sistema modular baseado em grid responsivo estrito de 8px adaptando-se a qualquer tela física.</p>
                 </div>
             </div>
         </section>
 
+        <!-- COMO FUNCIONA -->
         <section class="features-section" id="workflow">
-            <div class="section-headline-block reveal-element">
+            <div class="section-headline-block">
                 <h2>Implementação em Três Etapas</h2>
                 <p>Nossa esteira foi moldada para acelerar a entrega do seu Micro SaaS sem fricção técnica.</p>
             </div>
             <div class="steps-timeline">
-                <div class="step-node reveal-element delay-1">
+                <div class="step-node">
                     <div class="step-number">1</div>
                     <h4>Criar Conta</h4>
                     <p>Faça seu cadastro instantâneo e ganhe acesso imediato ao ambiente Sandbox de testes isolados.</p>
                 </div>
-                <div class="step-node reveal-element delay-2">
+                <div class="step-node">
                     <div class="step-number">2</div>
                     <h4>Integrar API Key</h4>
                     <p>Gere e copie suas credenciais criptografadas de forma segura e configure as chaves no seu sistema.</p>
                 </div>
-                <div class="step-node reveal-element delay-3">
+                <div class="step-node">
                     <div class="step-number">3</div>
                     <h4>Escalar Operação</h4>
                     <p>Acompanhe gráficos analíticos em tempo real através do painel principal monitorando KPIs.</p>
@@ -140,12 +139,13 @@
             </div>
         </section>
 
+        <!-- PRICING -->
         <section class="pricing-section" id="pricing">
-            <div class="section-headline-block reveal-element">
+            <div class="section-headline-block">
                 <h2>Preços Claros e Justos</h2>
                 <p>Selecione a licença ideal para o estágio do seu ecossistema comercial.</p>
             </div>
-            <div class="pricing-toggle-wrap reveal-element">
+            <div class="pricing-toggle-wrap">
                 <span>Mensal</span>
                 <label class="switch-control">
                     <input type="checkbox" id="pricing-toggle" class="switch-input">
@@ -154,13 +154,74 @@
                 <span>Anual <small style="color: var(--color-neon); font-weight: var(--weight-bold);">(Salva 20%)</small></span>
             </div>
             <div class="pricing-layout-grid">
-                <div class="card glass-panel reveal-element reveal-left">
-                    <div>
-                        <h4 style="color: var(--color-grey);">Free</h4>
-                        <div style="margin: var(--space-2) 0;"><span id="price-free" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>/mês</div>
-                        <p>Para experimentações e pequenos protótipos de engenhos.</p>
+                <div class="card">
+                    <h4 style="color: var(--color-grey);">Free</h4>
+                    <div style="margin: var(--space-2) 0;"><span id="price-free" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>/mês</div>
+                    <p>Para experimentações e pequenos protótipos.</p>
+                </div>
+                <div class="card glass-panel-neon">
+                    <h4 style="color: var(--color-neon);">Pro</h4>
+                    <div style="margin: var(--space-2) 0;"><span id="price-pro" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 97</span>/mês</div>
+                    <p>Acesso completo à suíte analítica e requisições ilimitadas via API.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--color-info);">Enterprise</h4>
+                    <div style="margin: var(--space-2) 0;"><span id="price-enterprise" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 297</span>/mês</div>
+                    <p>Suporte dedicado especializado corporativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section" id="faq">
+            <div class="section-headline-block">
+                <h2>Perguntas Frequentes</h2>
+            </div>
+            <div class="faq-accordion-list">
+                <div class="faq-accordion-item">
+                    <button class="faq-accordion-trigger">
+                        O código possui dependências externas pagas?
+                        <span>+</span>
+                    </button>
+                    <div class="faq-accordion-panel">
+                        <p>Não. Toda a engenharia estrutural do NovaCore foi desenhada em JavaScript Vanilla e CSS puro, eliminando riscos operacionais.</p>
                     </div>
-                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-4);">Começar Agora</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ARQUIVO DE SCRIPT UNIFICADO DIRETO NA RAIZ -->
+    <script src="./scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionTriggers = document.querySelectorAll('.faq-accordion-trigger');
+            accordionTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const item = trigger.closest('.faq-accordion-item');
+                    item.classList.toggle('is-open');
+                });
+            });
+
+            const pricingToggle = document.getElementById('pricing-toggle');
+            const proPrice = document.getElementById('price-pro');
+            const enterprisePrice = document.getElementById('price-enterprise');
+            if (pricingToggle && proPrice && enterprisePrice) {
+                pricingToggle.addEventListener('change', () => {
+                    if (pricingToggle.checked) {
+                        proPrice.textContent = 'R$ 77';
+                        enterprisePrice.textContent = 'R$ 237';
+                    } else {
+                        proPrice.textContent = 'R$ 97';
+                        enterprisePrice.textContent = 'R$ 297';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+h: 100%; margin-top: var(--space-4);">Começar Agora</a>
                 </div>
                 <div class="card glass-panel-neon price-card-premium reveal-element animate-pulse-neon">
                     <div>
