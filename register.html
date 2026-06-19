@@ -8,14 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/glassmorphism.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/glassmorphism.css">
     <style>
-        /* Estilos isolados para a interface de registro */
         .auth-viewport {
             width: 100vw;
             min-height: 100vh;
@@ -130,10 +129,10 @@
         </div>
     </div>
 
-    <script src="js/core.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/components.js"></script>
+    <script src="/js/core.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/components.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('register-form');
@@ -150,7 +149,6 @@
                 const email = emailInput.value.trim();
                 const password = passwordInput.value;
 
-                // Validações de entrada estritas
                 if (name.length < 2) {
                     window.NovaCoreUI.showToast('Por favor, digite seu nome completo.', 'error');
                     nameInput.focus();
@@ -175,12 +173,10 @@
                     return;
                 }
 
-                // Início do estado de processamento assíncrono
                 submitBtn.classList.add('is-loading');
                 submitBtn.disabled = true;
 
                 try {
-                    // Executa a tentativa de criação de registro no microssistema
                     await window.NovaCoreAuth.register(name, email, password);
                     window.NovaCoreUI.showToast('Conta criada! Redirecionando para login...', 'success');
                     

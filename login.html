@@ -8,14 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/glassmorphism.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/glassmorphism.css">
     <style>
-        /* Estilos específicos e isolados da página de autenticação */
         .auth-viewport {
             width: 100vw;
             min-height: 100vh;
@@ -134,10 +133,10 @@
         </div>
     </div>
 
-    <script src="js/core.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/components.js"></script>
+    <script src="/js/core.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/components.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('login-form');
@@ -146,7 +145,6 @@
             const rememberCheckbox = document.getElementById('remember-me');
             const submitBtn = document.getElementById('submit-btn');
 
-            // Verifica se há e-mail salvo anteriormente pelo localStorage ("Lembrar acesso")
             const savedEmail = localStorage.getItem('novacore_remembered_email');
             if (savedEmail) {
                 emailInput.value = savedEmail;
@@ -160,7 +158,6 @@
                 const password = passwordInput.value;
                 const rememberMe = rememberCheckbox.checked;
 
-                // Validação sintática em tempo de execução
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     window.NovaCoreUI.showToast('Por favor, insira um e-mail válido.', 'error');
@@ -174,16 +171,13 @@
                     return;
                 }
 
-                // Ativa estado de carregamento visual do botão (Loading State)
                 submitBtn.classList.add('is-loading');
                 submitBtn.disabled = true;
 
                 try {
-                    // Executa a tentativa de autenticação via microssistema nativo
                     await window.NovaCoreAuth.login(email, password, rememberMe);
                     window.NovaCoreUI.showToast('Autenticado com sucesso! Redirecionando...', 'success');
                     
-                    // Redireciona para o dashboard principal ou página solicitada previamente
                     const urlParams = new URLSearchParams(window.location.search);
                     const redirectUrl = urlParams.get('redirect') || 'dashboard.html';
                     

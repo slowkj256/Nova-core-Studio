@@ -8,13 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/glassmorphism.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/glassmorphism.css">
+    <link rel="stylesheet" href="/css/landing.css">
 </head>
 <body>
 
@@ -56,8 +56,7 @@
                     </div>
                 </div>
                 <div class="hero-mockup-container reveal-element reveal-right delay-2">
-                    <div class="hero-mockup-preview glass-panel-neon">
-                        </div>
+                    <div class="hero-mockup-preview glass-panel-neon"></div>
                 </div>
             </div>
         </section>
@@ -295,25 +294,20 @@
         </div>
     </footer>
 
-    <script src="js/core.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/components.js"></script>
+    <script src="/js/core.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/animations.js"></script>
+    <script src="/js/components.js"></script>
     <script>
-        // Lógica exclusiva e pontual para acionamento do Accordion e do Toggle de Preços da Landing
         document.addEventListener('DOMContentLoaded', () => {
-            // FAQ Accordion Toggle
             const accordionTriggers = document.querySelectorAll('.faq-accordion-trigger');
             accordionTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     const item = trigger.closest('.faq-accordion-item');
                     const isOpen = item.classList.contains('is-open');
-                    
-                    // Fecha todos os itens abertos previamente
                     document.querySelectorAll('.faq-accordion-item').forEach(i => i.classList.remove('is-open'));
-                    
                     if (!isOpen) {
                         item.classList.add('is-open');
                         trigger.setAttribute('aria-expanded', 'true');
@@ -323,7 +317,6 @@
                 });
             });
 
-            // Pricing Model Toggle Switch Handler
             const pricingToggle = document.getElementById('pricing-toggle');
             const proPrice = document.getElementById('price-pro');
             const enterprisePrice = document.getElementById('price-enterprise');
@@ -331,5 +324,15 @@
             if (pricingToggle && proPrice && enterprisePrice) {
                 pricingToggle.addEventListener('change', () => {
                     if (pricingToggle.checked) {
-                        // Valores anuais calculados com o desconto de 20%
-                        proPrice.textC
+                        proPrice.textContent = 'R$ 77';
+                        enterprisePrice.textContent = 'R$ 237';
+                    } else {
+                        proPrice.textContent = 'R$ 97';
+                        enterprisePrice.textContent = 'R$ 297';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
