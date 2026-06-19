@@ -7,10 +7,49 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- ARQUIVO DE ESTILO UNIFICADO DIRETO NA RAIZ -->
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Ajustes finos extras para o layout mobile e footer */
+        .pricing-layout-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-3);
+            align-items: stretch;
+        }
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-3);
+            margin: var(--space-4) 0 var(--space-3);
+            text-align: left;
+        }
+        .footer-col h4 {
+            color: var(--color-white-pure);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+            font-size: var(--font-size-sm);
+            color: var(--color-grey);
+        }
+        @media (max-width: 968px) {
+            .pricing-layout-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .footer-links-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -154,26 +193,50 @@
                 <span>Anual <small style="color: var(--color-neon); font-weight: var(--weight-bold);">(Salva 20%)</small></span>
             </div>
             <div class="pricing-layout-grid">
-                <div class="card">
-                    <h4 style="color: var(--color-grey);">Free</h4>
-                    <div style="margin: var(--space-2) 0;"><span id="price-free" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>/mês</div>
-                    <p>Para experimentações e pequenos protótipos.</p>
+                <!-- CARD FREE -->
+                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h4 style="color: var(--color-grey);">Free</h4>
+                        <div style="margin: var(--space-2) 0;"><span id="price-free" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 0</span>/mês</div>
+                        <p>Para experimentações e pequenos protótipos de engenhos rápidos.</p>
+                    </div>
+                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-3);">Começar Agora</a>
                 </div>
-                <div class="card glass-panel-neon">
-                    <h4 style="color: var(--color-neon);">Pro</h4>
-                    <div style="margin: var(--space-2) 0;"><span id="price-pro" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 97</span>/mês</div>
-                    <p>Acesso completo à suíte analítica e requisições ilimitadas via API.</p>
+
+                <!-- CARD PRO -->
+                <div class="card glass-panel-neon" style="display: flex; flex-direction: column; justify-content: space-between; border-color: var(--color-neon);">
+                    <div>
+                        <span class="hero-badge" style="float: right; margin-bottom: 0;">Recomendado</span>
+                        <h4 style="color: var(--color-neon); margin-top: var(--space-1);">Pro</h4>
+                        <div style="margin: var(--space-2) 0;"><span id="price-pro" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 97</span>/mês</div>
+                        <p>Acesso completo à suíte analítica e requisições ilimitadas via API dedicada.</p>
+                    </div>
+                    <a href="register.html" class="btn btn-primary" style="width: 100%; margin-top: var(--space-3);">Upgrade Pro</a>
                 </div>
-                <div class="card">
-                    <h4 style="color: var(--color-info);">Enterprise</h4>
-                    <div style="margin: var(--space-2) 0;"><span id="price-enterprise" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 297</span>/mês</div>
-                    <p>Suporte dedicado especializado corporativo.</p>
+
+                <!-- CARD ENTERPRISE -->
+                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h4 style="color: var(--color-info);">Enterprise</h4>
+                        <div style="margin: var(--space-2) 0;"><span id="price-enterprise" style="font-size: var(--font-size-display-md); font-weight: var(--weight-display); color: var(--color-white-pure);">R$ 297</span>/mês</div>
+                        <p>Suporte dedicado especializado corporativo e SLA estrutural customizado.</p>
+                    </div>
+                    <a href="register.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-3);">Falar com Vendas</a>
                 </div>
             </div>
         </section>
 
+        <!-- FINAL CTA BANNER -->
+        <section class="features-section">
+            <div class="final-cta-banner">
+                <h2 class="neon-glow-text" style="font-size: var(--font-size-xl);">Pronto para elevar o padrão do seu produto?</h2>
+                <p style="color: var(--color-grey); max-width: 600px; margin-bottom: var(--space-2);">Crie sua conta em menos de dois minutos e entre no ambiente de homologação premium do NovaCore.</p>
+                <a href="register.html" class="btn btn-primary">Criar Minha Conta</a>
+            </div>
+        </section>
+
         <!-- FAQ ACCORDION -->
-        <section class="faq-section" id="faq">
+        <section class="faq-section" id="faq" style="margin-bottom: var(--space-5);">
             <div class="section-headline-block">
                 <h2>Perguntas Frequentes</h2>
             </div>
@@ -184,12 +247,85 @@
                         <span>+</span>
                     </button>
                     <div class="faq-accordion-panel">
-                        <p>Não. Toda a engenharia estrutural do NovaCore foi desenhada em JavaScript Vanilla e CSS puro, eliminando riscos operacionais.</p>
+                        <p>Não. Toda a engenharia estrutural do NovaCore foi desenhada em JavaScript Vanilla e CSS puro, eliminando riscos operacionais e custos adicionais desnecessários.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- FOOTER ORGANIZADO -->
+    <footer class="trust-section" style="background-color: rgba(0,0,0,0.2); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: var(--space-3) 0;">
+            <div class="nav-logo">
+                <a href="index.html" class="neon-glow-text" style="font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--font-size-md); color: var(--color-white-pure);">
+                    NOVA<span style="color: var(--color-neon);">CORE</span>
+                </a>
+                <p style="font-size: var(--font-size-xs); color: var(--color-grey-soft); margin-top: 0.5rem;">Arquitetura purista para sistemas computacionais de inteligência analítica e SaaS de altíssima escala.</p>
+            </div>
+            
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li>Recursos</li>
+                        <li>Planos</li>
+                        <li>Perguntas</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li>Privacidade</li>
+                        <li>Termos</li>
+                        <li>SLA</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Desenvolvedor</h4>
+                    <ul>
+                        <li>Painel Sandbox</li>
+                        <li>Documentação</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-2); margin-top: var(--space-3); text-align: center;">
+                <small style="color: var(--color-grey-soft); font-size: var(--font-size-xs);">&copy; 2026 NovaCore AI Studio. Todos os direitos reservados de engenharia. Construído puramente em Vanilla JS.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ARQUIVO DE SCRIPT UNIFICADO DIRETO NA RAIZ -->
+    <script src="./scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionTriggers = document.querySelectorAll('.faq-accordion-trigger');
+            accordionTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const item = trigger.closest('.faq-accordion-item');
+                    item.classList.toggle('is-open');
+                });
+            });
+
+            const pricingToggle = document.getElementById('pricing-toggle');
+            const proPrice = document.getElementById('price-pro');
+            const enterprisePrice = document.getElementById('price-enterprise');
+            if (pricingToggle && proPrice && enterprisePrice) {
+                pricingToggle.addEventListener('change', () => {
+                    if (pricingToggle.checked) {
+                        proPrice.textContent = 'R$ 77';
+                        enterprisePrice.textContent = 'R$ 237';
+                    } else {
+                        proPrice.textContent = 'R$ 97';
+                        enterprisePrice.textContent = 'R$ 297';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+main>
 
     <!-- ARQUIVO DE SCRIPT UNIFICADO DIRETO NA RAIZ -->
     <script src="./scripts.js"></script>
