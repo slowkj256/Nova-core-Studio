@@ -3,153 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | NovaCore AI Studio</title>
-    <!-- Google Fonts -->
+    <title>Console | NovaCore Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Links Corrigidos para a Raiz -->
-    <link rel="stylesheet" href="./variables.css">
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./components.css">
-    <link rel="stylesheet" href="./layout.css">
-    <link rel="stylesheet" href="./animations.css">
-    <link rel="stylesheet" href="./glassmorphism.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
     <style>
-        .stat-grid-three {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-3);
-            margin-bottom: var(--space-4);
-        }
-        .stat-display-value {
-            font-size: var(--font-size-xxl);
-            font-weight: var(--weight-display);
-            color: var(--color-white-pure);
-            line-height: 1.2;
-            margin: var(--space-1) 0;
-        }
-        .api-key-container {
-            display: flex;
-            gap: var(--space-2);
-            align-items: center;
-            background-color: var(--color-bg);
-            padding: var(--space-2);
-            border-radius: var(--radius-sm);
+        .terminal-box {
+            background: #020204;
             border: 1px solid var(--color-border);
-            font-family: var(--font-code);
-            margin-top: var(--space-2);
-        }
-        .activity-list-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-            margin-top: var(--space-2);
-        }
-        .activity-row-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--space-2);
             border-radius: var(--radius-sm);
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: var(--space-2);
+            font-family: var(--font-code);
+            font-size: var(--font-size-sm);
+            color: #00FF66;
+            min-height: 200px;
+            overflow-y: auto;
+            margin-top: var(--space-2);
         }
-        @media (max-width: 768px) {
-            .stat-grid-three { grid-template-columns: 1fr; }
-        }
+        .log-row { margin-bottom: 0.4rem; color: var(--color-white); }
+        .log-success { color: var(--color-neon); }
     </style>
 </head>
 <body>
 
-    <div class="app-wrapper animate-fade-in">
-        <!-- SIDEBAR -->
-        <aside class="app-sidebar" id="sidebar-menu">
+    <div class="app-wrapper">
+        <!-- BARRA LATERAL -->
+        <aside class="app-sidebar">
             <div>
-                <div class="sidebar-header">
-                    <a href="index.html" class="neon-glow-text" style="font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--font-size-lg); color: var(--color-white-pure);">
-                        NOVA<span style="color: var(--color-neon);">CORE</span>
-                    </a>
-                </div>
-                <nav class="sidebar-nav">
-                    <a href="dashboard.html" class="sidebar-link is-active">Dashboard</a>
-                </nav>
+                <a href="index.html" class="neon-glow-text" style="font-family: var(--font-display); font-weight: 800; color: #FFF; font-size: var(--font-size-lg);">
+                    NOVA<span style="color: var(--color-neon);">CORE</span>
+                </a>
+                <p style="font-size: var(--font-size-xs); color: var(--color-grey-soft); margin-top: 5px;">Ambiente de Produção v2.4</p>
             </div>
-            <div class="sidebar-footer">
-                <button id="logout-btn" class="btn btn-danger" style="width: 100%;">Sair do Sistema</button>
-            </div>
+            <a href="index.html" class="btn btn-secondary" style="width: 100%;">Encerrar Sessão</a>
         </aside>
 
-        <!-- HEADER -->
-        <header class="app-header">
-            <div class="header-left">
-                <h3 style="font-size: var(--font-size-md); font-weight: var(--weight-semibold);">Ambiente de Console</h3>
-            </div>
-            <div class="header-right">
-                <button class="btn btn-secondary" id="user-display-name">Carregando...</button>
-            </div>
-        </header>
+        <!-- AREA CENTRAL -->
+        <div class="app-content">
+            <header class="app-header">
+                <h4 style="font-weight: 600;">Console Analítico Reativo</h4>
+                <div class="hero-badge" id="user-display">Desenvolvedor Conectado</div>
+            </header>
 
-        <!-- MAIN -->
-        <main class="app-main animate-fade-in-up">
-            <div class="stat-grid-three">
-                <div class="card glass-panel-neon">
-                    <span class="form-label">Requisições Consumidas</span>
-                    <div class="stat-display-value" id="stat-requests">...</div>
-                </div>
-                <div class="card glass-panel-neon">
-                    <span class="form-label">Faturamento Operacional</span>
-                    <div class="stat-display-value" id="stat-revenue">...</div>
-                </div>
-                <div class="card glass-panel-neon">
-                    <span class="form-label">Média de Latência</span>
-                    <div class="stat-display-value">14.2 ms</div>
-                </div>
-            </div>
-
-            <div class="dashboard-layout-grid">
-                <div class="card glass-panel">
-                    <h4 style="color: var(--color-white-pure);">Tokens de Acesso à API</h4>
-                    <div class="api-key-container">
-                        <span id="api-key-masked">nc_live_••••••••••••••••••••••••</span>
+            <main class="app-main">
+                <!-- GRID DE ESTATÍSTICAS DINÂMICAS -->
+                <div class="stat-grid-three">
+                    <div class="card glass-panel-neon">
+                        <span style="font-size: var(--font-size-xs); color: var(--color-grey); text-transform: uppercase;">Métricas Consolidadas</span>
+                        <div class="stat-display-value" id="counter-req">0</div>
+                        <small style="color: var(--color-grey-soft);">Requisições efetuadas hoje</small>
+                    </div>
+                    <div class="card glass-panel-neon">
+                        <span style="font-size: var(--font-size-xs); color: var(--color-grey); text-transform: uppercase;">Volume Comercial</span>
+                        <div class="stat-display-value" id="counter-revenue">R$ 0,00</div>
+                        <small style="color: var(--color-grey-soft);">Faturamento operacional bruto</small>
+                    </div>
+                    <div class="card glass-panel-neon">
+                        <span style="font-size: var(--font-size-xs); color: var(--color-grey); text-transform: uppercase;">Latência Atual</span>
+                        <div class="stat-display-value" id="current-latency">0 ms</div>
+                        <small style="color: var(--color-grey-soft);">Tempo real da última chamada</small>
                     </div>
                 </div>
-                <div class="card glass-panel">
-                    <h4 style="color: var(--color-white-pure);">Logs Auditores</h4>
-                    <div class="activity-list-wrapper" id="logs-container"></div>
-                </div>
-            </div>
-        </main>
-    </div>
 
-    <!-- Scripts Corrigidos para a Raiz -->
-    <script src="./core.js"></script>
-    <script src="./api.js"></script>
-    <script src="./auth.js"></script>
-    <script src="./components.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const session = window.NovaCoreAuth.getCurrentSession();
-            if (!session) return;
-            
-            document.getElementById('user-display-name').textContent = session.user.name;
-            const mockData = window.NovaCoreAPI.FallbackMockData;
-            document.getElementById('stat-requests').textContent = window.NovaCoreUtils.formatCompactNumber(mockData.stats.sessions);
-            document.getElementById('stat-revenue').textContent = window.NovaCoreUtils.formatCurrency(mockData.stats.revenue);
-
-            const logsContainer = document.getElementById('logs-container');
-            if (logsContainer) {
-                logsContainer.innerHTML = mockData.activities.map(act => `
-                    <div class="activity-row-item">
+                <!-- ÁREA DE OPERAÇÕES REALÍSTICAS -->
+                <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-4);">
+                    <div class="card">
                         <div>
-                            <h5 style="font-size: var(--font-size-sm); color: var(--color-white);">${act.action}</h5>
-                            <small style="color: var(--color-grey-soft);">${act.date}</small>
+                            <h3 style="color: var(--color-white-pure); margin-bottom: 0.5rem;">Disparador de Carga da API (Simulador)</h3>
+                            <p style="color: var(--color-grey); font-size: var(--font-size-sm); margin-bottom: 1rem;">
+                                Clique no botão abaixo para simular chamadas de produção externas consumindo sua chave privada.
+                            </p>
+                            <button id="trigger-call-btn" class="btn btn-primary">Executar Requisição de IA</button>
+                        </div>
+                        
+                        <div class="terminal-box" id="terminal-console">
+                            <div class="log-row" style="color: var(--color-grey-soft);">[SISTEMA] Aguardando inicialização de chamadas via API de produção externa...</div>
                         </div>
                     </div>
-                `).join('');
-            }
+                </div>
+            </main>
+        </div>
+    </div>
 
-            document.getElementById('logout-btn').addEventListener('click', () => window.NovaCoreAuth.logout());
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicialização de Estado reativo via LocalStorage
+            let requests = parseInt(localStorage.getItem('nc_req_count')) || 89000;
+            let revenue = parseFloat(localStorage.getItem('nc_rev_count')) || 45230.80;
+
+            const reqEl = document.getElementById('counter-req');
+            const revEl = document.getElementById('counter-revenue');
+            const latEl = document.getElementById('current-latency');
+            const termEl = document.getElementById('terminal-console');
+            const btnCall = document.getElementById('trigger-call-btn');
+
+            function updateUI(latency = 0) {
+                reqEl.textContent = requests.toLocaleString('pt-BR');
+                revEl.textContent = revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                latEl.textContent = latency > 0 ? `${latency} ms` : '14.2 ms';
+            }
+            updateUI();
+
+            btnCall.addEventListener('click', () => {
+                btnCall.disabled = true;
+                btnCall.textContent = "Processando nós...";
+
+                const generatedLatency = Math.floor(Math.random() * (22 - 9 + 1)) + 9; 
+                const costPerRequest = 0.52; 
+
+                setTimeout(() => {
+                    requests += 1;
+                    revenue += costPerRequest;
+
+                    localStorage.setItem('nc_req_count', requests);
+                    localStorage.setItem('nc_rev_count', revenue);
+
+                    const timestamp = new Date().toLocaleTimeString();
+                    const log = document.createElement('div');
+                    log.className = 'log-row log-success';
+                    log.innerHTML = `[${timestamp}] <span style="color: #00B2FF;">POST /v1/ai/completion</span> - Status 200 OK | Latência: ${generatedLatency}ms | Custo: R$ ${costPerRequest.toFixed(2)}`;
+                    termEl.appendChild(log);
+                    termEl.scrollTop = termEl.scrollHeight;
+
+                    updateUI(generatedLatency);
+                    btnCall.disabled = false;
+                    btnCall.textContent = "Executar Requisição de IA";
+                }, 350);
+            });
         });
     </script>
 </body>
